@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nada.com</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      font-family: "Comic Sans MS", Arial, sans-serif;
+      text-align: center;
+      overflow: hidden;
+      animation: bgFlash 3s infinite;
+    }
+
+    @keyframes bgFlash {
+      0% { background-color: black; }
+      25% { background-color: darkred; }
+      50% { background-color: darkblue; }
+      75% { background-color: darkgreen; }
+      100% { background-color: black; }
+    }
+
+    h1 {
+      font-size: 72px;
+      margin-top: 60px;
+      animation: rainbowBlink 1s infinite;
+    }
+
+    @keyframes rainbowBlink {
+      0% { color: red; }
+      20% { color: orange; }
+      40% { color: yellow; }
+      60% { color: lime; }
+      80% { color: cyan; }
+      100% { color: magenta; }
+    }
+
+    p {
+      font-size: 28px;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    button {
+      font-size: 30px;
+      padding: 15px 40px;
+      margin-top: 40px;
+      cursor: pointer;
+      border: 5px solid white;
+      background: yellow;
+      color: black;
+      animation: shake 0.3s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0,0); }
+      25% { transform: translate(3px,0); }
+      50% { transform: translate(-3px,0); }
+      75% { transform: translate(0,3px); }
+      100% { transform: translate(0,0); }
+    }
+
+    marquee {
+      font-size: 24px;
+      color: cyan;
+      margin-top: 40px;
+    }
+
+    .float {
+      position: absolute;
+      font-size: 20px;
+      color: lime;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-20vh); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>NADA.COM</h1>
+  <p>HERE YOU CAN DO... NOTHING</p>
+
+  <button onclick="start()">ENTER SITE</button>
+
+  <!-- AUDIO -->
+  <audio id="welcomeAudio" loop>
+    <source src="welcome.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="friendlyAudio" loop>
+    <source src="New Friendly.mp3" type="audio/mpeg">
+  </audio>
+
+  <marquee behavior="alternate" scrollamount="10">
+    NOTHING NOTHING NOTHING NOTHING NOTHING NOTHING
+  </marquee>
+
+  <!-- FLOATING CHAOS -->
+  <div class="float" style="left:10%;">★</div>
+  <div class="float" style="left:30%;">404</div>
+  <div class="float" style="left:50%;">WHY</div>
+  <div class="float" style="left:70%;">LOL</div>
+  <div class="float" style="left:90%;">!!!</div>
+
+  <script>
+    function start() {
+      const welcome = document.getElementById("welcomeAudio");
+      const friendly = document.getElementById("friendlyAudio");
+
+      welcome.volume = 1.0;    // loud voice
+      friendly.volume = 0.15;  // quiet background music
+
+      welcome.play();
+      friendly.play();
+
+      event.target.style.display = "none";
+    }
+
+    // CURSOR TRAIL (classic 2000s)
+    document.addEventListener("mousemove", e => {
+      const dot = document.createElement("div");
+      dot.style.position = "absolute";
+      dot.style.left = e.pageX + "px";
+      dot.style.top = e.pageY + "px";
+      dot.style.width = "6px";
+      dot.style.height = "6px";
+      dot.style.background = "white";
+      dot.style.borderRadius = "50%";
+      dot.style.pointerEvents = "none";
+      document.body.appendChild(dot);
+      setTimeout(() => dot.remove(), 300);
+    });
+  </script>
+
+</body>
+</html>
